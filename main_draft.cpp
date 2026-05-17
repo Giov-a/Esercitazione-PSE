@@ -38,7 +38,32 @@ int main()
         shapes[i]->Dump();
     }
 
-    // 4. Cancellazione figure
+    // 5. Scalamento figure
+    float sf;
+    int shape = 0;
+    while (true)
+    {
+        cout << "Inserire numero figura da scalare (secondo dump precedente); -1 per uscire" << endl;
+        cin >> shape;
+        if (shape == -1)
+            break;
+        cout << "Inserire fattore di scala" << endl;
+        cin >> sf;
+        shapes[shape]->Scale(sf);
+    }
+
+    // 6. Dump post scalamento
+    cout << endl
+         << "===== DUMP POST SCALAMENTO =====" << endl;
+
+    for (int i = 0; i < nShapes; i++)
+    {
+        cout << endl
+             << "Figura [" << i << "]" << endl;
+        shapes[i]->Dump();
+    }
+
+    // 7. Cancellazione figure
     for (int i = 0; i < nShapes; i++)
         delete shapes[i];
 

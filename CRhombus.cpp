@@ -124,7 +124,7 @@ float Rhombus::GetArea()
 /// @return perimeter
 float Rhombus::GetPerimeter()
 {
-    return 4.0 * GetSide();
+    return (float)4.0 * GetSide();
 }
 
 /* ----------------------------

@@ -116,7 +116,7 @@ float Rectangle::GetArea()
 /// @return perimeter
 float Rectangle::GetPerimeter()
 {
-    return 2.0 * (width + height);
+    return (float)2.0 * (width + height);
 }
 
 /* ----------------------------

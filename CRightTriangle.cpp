@@ -92,20 +92,6 @@ void RightTriangle::Reset()
    GETTERS
    ---------------------------- */
 
-/// @brief to get the height of the RightTriangle
-/// @return height
-float RightTriangle::GetHeight()
-{
-    return height;
-}
-
-/// @brief to get the width of the RightTriangle
-/// @return width
-float RightTriangle::GetWidth()
-{
-    return width;
-}
-
 /// @brief to get the hypotenuse of the RightTriangle
 /// @return width
 float RightTriangle::GetHypotenuse()
@@ -142,6 +128,8 @@ void RightTriangle::Dump()
     Shape::Dump();
 
     cout << "  Figure hypotenuse:         " << GetHypotenuse() << endl;
+    cout << "  Figure base:         " << GetWidth() << endl;
+    cout << "  Figure height:         " << GetHeight() << endl;
     cout << "  Figure area:         " << GetArea() << endl;
     cout << "  Figure perimeter:    " << GetPerimeter() << endl;
     cout << "  Text:                " << (text ? text : "(null)") << endl;

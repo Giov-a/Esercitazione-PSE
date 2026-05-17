@@ -37,8 +37,6 @@ public:
 
     /// @name GETTERS
     /// @{
-    float GetHeight();
-    float GetWidth();
     float GetHypotenuse();
     float GetArea();
     float GetPerimeter();

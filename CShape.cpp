@@ -191,9 +191,20 @@ void Shape::Reset()
 /// @brief to rescale the shape without changing the aspect ratio
 /// @param sf scale factor (1.0 = 100%, no changes)
 
+/// @brief scale the bounding box by a scale factor
+/// @param sf scale factor > 0
 void Shape::Scale(float sf)
 {
-    // TO DO
+    if (sf > 0)
+    {
+        width *= sf;
+        height *= sf;
+    }
+    else
+    {
+        cout << "Invalid parameter" << endl;
+    }
+    return;
 }
 
 /* ----------------------------
