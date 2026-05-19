@@ -255,7 +255,7 @@ void Shape::SetHeight(float h)
 void Shape::SetWidth(float w)
 {
     if (checkPosDim(x, y, w, height))
-        height = w;
+        width = w;
     else
         WarningMessage("SetWidth: the new width is invalid; the shape would not fit the bounding box");
 }

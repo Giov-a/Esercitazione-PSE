@@ -122,10 +122,10 @@ void inserisciPoligono(Shape **shapes, int &nShapes)
             cin >> x;
             cout << "Inserisci coordinata y:" << endl;
             cin >> y;
-            cout << "Inserisci altezza:" << endl;
-            cin >> h;
             cout << "Inserisci larghezza:" << endl;
             cin >> w;
+            cout << "Inserisci altezza:" << endl;
+            cin >> h;
             switch (choice)
             {
             case 1:
