@@ -117,11 +117,9 @@ float RightTriangle::GetPerimeter()
    DEBUG and SERIALIZATION
    ---------------------------- */
 
-/// @brief for debugging: all infos about the object
+/// @brief for debugging: all info about the object
 void RightTriangle::Dump()
 {
-    cout << endl
-         << "----------------------" << endl;
     cout << "RightTriangle Dump:" << endl
          << endl;
 
@@ -134,4 +132,11 @@ void RightTriangle::Dump()
     cout << "  Figure perimeter:    " << GetPerimeter() << endl;
     cout << "  Text:                " << (text ? text : "(null)") << endl;
     cout << endl;
+}
+
+/// @brief for debugging: brief info about the object
+void RightTriangle::ShortDump()
+{
+    cout << "Figure: " << "RightTriangle" << endl;
+    Shape::Dump();
 }

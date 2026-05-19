@@ -134,8 +134,6 @@ float Rhombus::GetPerimeter()
 /// @brief for debugging: all infos about the object
 void Rhombus::Dump()
 {
-    cout << endl
-         << "----------------------" << endl;
     cout << "Rhombus Dump:" << endl
          << endl;
 
@@ -146,4 +144,11 @@ void Rhombus::Dump()
     cout << "  Figure perimeter:    " << GetPerimeter() << endl;
     cout << "  Text:                " << (text ? text : "(null)") << endl;
     cout << endl;
+}
+
+/// @brief for debugging: brief info about the object
+void Rhombus::ShortDump()
+{
+    cout << "Figure: " << "Rhombus" << endl;
+    Shape::Dump();
 }

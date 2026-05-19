@@ -46,6 +46,7 @@ public:
     /// @name DEBUG and SERIALIZATION
     /// @{
     void Dump();
+    void ShortDump();
     /// @}
 };
 

@@ -49,6 +49,7 @@ public:
 
     /// @name FORMATTING
     /// @{
+    bool checkPosDim(float x, float y, float width, float height);
     void Scale(float sf);
     /// @}
 
@@ -84,7 +85,15 @@ public:
     void ErrorMessage(const char *string);
     void WarningMessage(const char *string);
     virtual void Dump();
+    virtual void ShortDump() = 0;
     /// @}
+    /*
+        /// @name USER INPUT
+        /// @{
+        virtual void editProperties();
+        virtual void editPosision();
+        /// @}
+    */
 };
 
 #endif

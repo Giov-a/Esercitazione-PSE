@@ -126,8 +126,6 @@ float Rectangle::GetPerimeter()
 /// @brief for debugging: all infos about the object
 void Rectangle::Dump()
 {
-    cout << endl
-         << "----------------------" << endl;
     cout << "Rectangle Dump:" << endl
          << endl;
 
@@ -137,4 +135,11 @@ void Rectangle::Dump()
     cout << "  Figure perimeter:    " << GetPerimeter() << endl;
     cout << "  Text:                " << (text ? text : "(null)") << endl;
     cout << endl;
+}
+
+/// @brief for debugging: brief info about the object
+void Rectangle::ShortDump()
+{
+    cout << "Figure: " << "Rectangle" << endl;
+    Shape::Dump();
 }

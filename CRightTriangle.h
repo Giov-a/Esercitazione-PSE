@@ -45,6 +45,7 @@ public:
     /// @name DEBUG and SERIALIZATION
     /// @{
     virtual void Dump();
+    void ShortDump();
     /// @}
 };
 

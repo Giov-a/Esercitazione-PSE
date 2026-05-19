@@ -49,11 +49,14 @@ Shape::Shape(float px, float py, float w, float h)
 
     text = nullptr;
     Init();
-
-    SetPosition(px, py);
-
-    SetWidth(w);
-    SetHeight(h);
+    if (checkPosDim(px, py, w, h))
+    {
+        SetPosition(px, py);
+        SetWidth(w);
+        SetHeight(h);
+    }
+    else
+        WarningMessage("Shape constructor: The bounding box does not fit into the grid. Reverting to initial values");
 }
 
 /// @brief copy constructor
@@ -188,22 +191,34 @@ void Shape::Reset()
    FORMATTING
    ---------------------------- */
 
-/// @brief to rescale the shape without changing the aspect ratio
-/// @param sf scale factor (1.0 = 100%, no changes)
+/// @brief to check if the position and dimensions entered are valid
+/// @param x x position to check
+/// @param y y position to check
+/// @param width position to check
+/// @param width width position to check
+bool Shape::checkPosDim(float px, float py, float w, float h)
+{
+    bool validCoord = (px >= 0 && px <= 100 && py >= 0 && py <= 100);
+    bool validDim = (w >= 0 && w <= 100 && h >= 0 && h <= 100);
+    bool validPosandDim = (px + h <= 100 && py + h <= 100);
+    return (validCoord && validDim && validPosandDim);
+}
 
 /// @brief scale the bounding box by a scale factor
 /// @param sf scale factor > 0
 void Shape::Scale(float sf)
 {
     if (sf > 0)
-    {
-        width *= sf;
-        height *= sf;
-    }
+        if (checkPosDim(x, y, width * sf, height * sf))
+        {
+            width *= sf;
+            height *= sf;
+        }
+        else
+            WarningMessage("Scale: invalid parameter");
     else
-    {
-        cout << "Invalid parameter" << endl;
-    }
+        WarningMessage("Scale: invalid parameter");
+
     return;
 }
 
@@ -216,45 +231,33 @@ void Shape::Scale(float sf)
 /// @param py position on y
 void Shape::SetPosition(float px, float py)
 {
-    if (px < 0.)
+    if (checkPosDim(px, py, width, height))
     {
-        WarningMessage("SetPosition: the position in the grid cannot be a negative value; clamped to 0");
-        x = 0;
-    }
-    else
         x = px;
-
-    if (py < 0.)
-    {
-        WarningMessage("SetPosition: the position in the grid cannot be a negative value; clamped to 0");
-        y = 0;
+        y = py;
     }
     else
-        y = py;
+        WarningMessage("SetPosition: the new position is invalid; the shape would not fit the bounding box");
 }
 
 /// @brief set height of the object
 /// @param h height
 void Shape::SetHeight(float h)
 {
-    if (h < 0.0)
-    {
-        WarningMessage("SetHeight: negative value, clamped to 0");
-        h = 0.0;
-    }
-    height = h;
+    if (checkPosDim(x, y, width, h))
+        height = h;
+    else
+        WarningMessage("SetHeight: the new height is invalid; the shape would not fit the bounding box");
 }
 
 /// @brief set width of the object
 /// @param w width
 void Shape::SetWidth(float w)
 {
-    if (w < 0.0)
-    {
-        WarningMessage("SetWidth: negative value, clamped to 0");
-        w = 0.0;
-    }
-    width = w;
+    if (checkPosDim(x, y, w, height))
+        height = w;
+    else
+        WarningMessage("SetWidth: the new width is invalid; the shape would not fit the bounding box");
 }
 
 /// @brief set width and length of the object
@@ -262,8 +265,13 @@ void Shape::SetWidth(float w)
 /// @param h height
 void Shape::SetDim(float w, float h)
 {
-    SetWidth(w);
-    SetHeight(h);
+    if (checkPosDim(x, y, w, h))
+    {
+        SetWidth(w);
+        SetHeight(h);
+    }
+    else
+        WarningMessage("SetDim: the new dimensions are invalid; the shape would not fit the bounding box");
 }
 
 /// @brief set the text area of the object
@@ -379,7 +387,6 @@ void Shape::WarningMessage(const char *string)
 /// @brief for debugging: all infos about the object
 void Shape::Dump()
 {
-    std::cout << "Shape Dump:" << std::endl;
     std::cout << "  Position: (" << x << ", " << y << ")" << std::endl;
     std::cout << "  Width:  " << width << std::endl;
     std::cout << "  Height: " << height << std::endl;
