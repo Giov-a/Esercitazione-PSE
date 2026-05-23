@@ -87,13 +87,6 @@ public:
     virtual void Dump();
     virtual void ShortDump() = 0;
     /// @}
-    /*
-        /// @name USER INPUT
-        /// @{
-        virtual void editProperties();
-        virtual void editPosision();
-        /// @}
-    */
 };
 
 #endif

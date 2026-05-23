@@ -215,7 +215,7 @@ void Shape::Scale(float sf)
             height *= sf;
         }
         else
-            WarningMessage("Scale: invalid parameter");
+            WarningMessage("Scale: invalid parameter, the shape would not fit the bounding box");
     else
         WarningMessage("Scale: invalid parameter");
 
