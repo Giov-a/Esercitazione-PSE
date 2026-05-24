@@ -1,10 +1,15 @@
+/*! \file main_es2.cpp
+    \brief implementation of the user input menu
+    \author Giovanni Canepa
+*/
+
 #include <iostream>
 #include <cmath>
 
-#include "CShape.h"
-#include "CRectangle.h"
-#include "CRhombus.h"
-#include "CRightTriangle.h"
+#include ".\src\CShape.h"
+#include ".\src\CRectangle.h"
+#include ".\src\CRhombus.h"
+#include ".\src\CRightTriangle.h"
 
 using namespace std;
 
@@ -220,7 +225,7 @@ void eliminaPoligono(Shape **shapes, int &nShapes, bool userInput)
         {
             cout << "Inserisci indice del poligono da eliminare. -1 per uscire." << endl;
             cin >> choice;
-            if (choice > 0 && choice <= nShapes)
+            if (choice >= 0 && choice < nShapes)
             {
                 delete shapes[choice];
                 for (int i = choice; i < nShapes - 1; i++)

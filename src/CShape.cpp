@@ -1,4 +1,4 @@
-/*! \file CShape.h
+/*! \file CShape.cpp
     \brief implementation of class Shape
     \author Giovanni Canepa
 */
